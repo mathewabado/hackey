@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>hackey</title>
+        <link 
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" 
+            rel="stylesheet">
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js">
+        </script>
+        <script src="angularApp.js"></script>
+</head>
+<body ng-app="MyNewApp" ng-controller="MainCtrl">
+    <table st-table="playerStats" class="table table-striped">
+    <thead>
+        <tr>
+            <th ng-repeat="stat in statTitles" ng-click="changeSortTitle(stat)">
+                {{stat}}
+                <span ng-show="stat === orderStat">
+                    <span ng-show="sortReverse"> ^ </span>
+                    <span ng-show="!sortReverse"> v </span>
+               </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="player in playerStats | orderBy: getOrderStat : sortReverse">
+            <td ng-repeat="stat in statTitles">{{player[stat]}}</td>
+        </tr>
+    </tbody>
+</body>
+</html>
+
+
+<!--
+Name
+Year
+Team
+Pos
+Games
+Goals
+Assists
+Points
+Plus
+Pim
+Pt/G
+Ppg
+Ppp
+Shg
+Gwg
+Otg
+S
+S%
+Toi/G
+Shifts/G
+FOW%
+-->
